@@ -144,10 +144,6 @@ def train(dataset, test_set, val_set, writer):
             print("Epoch {}. Loss: {:.4f}. val_accuracy: {:.4f}. AUC: {:.4f}. ".format(epoch,  total_loss, test_acc, auc(fpr, tpr)))
             # writer.add_scalar("test accuracy", test_acc, epoch)
 
-            # if test_acc + (spe + sen)/2 > val_acc:
-            #     val_acc = test_acc + (spe + sen)/2
-
-            # if auc(fpr, tpr) > val_acc and epoch > 20:
             if auc(fpr, tpr) > val_acc:
 
                 # val_acc = auc(fpr, tpr)
@@ -155,9 +151,6 @@ def train(dataset, test_set, val_set, writer):
                 # optimal_idx = np.argmax(tpr - fpr)
                 # thres = thresholds[optimal_idx]
                 torch.save(model, '.\saved_model\modelt.pkl')
-
-            # if test_acc >= 0.8:
-            #     return model
 
             if epoch % 20 == 0:
                 weight_vector = model.weight_lap
