@@ -92,7 +92,6 @@ def main():
 	# print('threshold {:.4f}'.format(thres))
 	# print('threshold1 {:.4f}'.format(thres1))
 
-
 	# sio.savemat('.\saved_model\cinepsl1.mat', {'score': score})
 	# sio.savemat('.\saved_model\weight_1.mat', {'weight1': weight_vector})
 
