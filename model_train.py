@@ -46,28 +46,7 @@ def main():
 	train_data = torch.utils.data.Subset(dataset, Ind_train)
 	test_data = torch.utils.data.Subset(dataset, Ind_test)
 	val_data = torch.utils.data.Subset(dataset, Ind_val)
-	# Ind_all = list(range(192))
-	# Ind_train, Ind_test = train_test_split(Ind_all, test_size=0.1)
-	# Ind_train, Ind_val = train_test_split(Ind_train, test_size=0.1)
 
-	# train_data = []
-	# val_data = []
-	# test_data = []
-
-	# print(type(Ind_train))
-	#
-	# for i in Ind_train:
-	# 	train_data.extend(list(range(8*i, 8*i+8)))
-	#
-	# for i in Ind_val:
-	# 	val_data.extend(list(range(8*i, 8*i+8)))
-	#
-	# for i in Ind_test:
-	# 	test_data.extend(list(range(8*i, 8*i+8)))
-	#
-	# train_data = torch.utils.data.Subset(dataset, train_data)
-	# test_data = torch.utils.data.Subset(dataset, test_data)
-	# val_data = torch.utils.data.Subset(dataset, val_data)
 
 	print("Training samples: ", len(train_data))
 	print("Validation samples: ", len(val_data))
@@ -79,11 +58,7 @@ def main():
 
 	test_loader = DataLoader(test_data, batch_size=16, shuffle=False)
 
-	# dataset = dataset.shuffle()
-	# data_size = len(dataset)
-	# train_dataset = dataset[:int(data_size * 0.8)]
-	# test_dataset = dataset[int(data_size * 0.8):]
-	# train_dataset = train_dataset.shuffle()
+
 	model, val_acc = train(train_loader, test_loader, val_loader, writer)
 	print(model)
 
